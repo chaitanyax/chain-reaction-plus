@@ -1,2 +1,2 @@
 import '../scss/style.scss';
-import './gameEntry';
+import './game-entry';
