@@ -1,0 +1,15 @@
+.wrapper {
+    .chain-container {
+        max-width: 30%;;
+        height: auto;
+        margin: 0 auto;
+        .chain-row {
+            display: flex;
+            .chain-column {
+                height: 100px;
+                width: 100px;
+                border: 1px solid orange;
+            }
+        }
+    }
+}
