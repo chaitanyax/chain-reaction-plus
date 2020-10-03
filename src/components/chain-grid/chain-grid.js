@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { SMALL_GRID, LARGE_GRID } from './constants.js';
+import { SMALL_GRID, LARGE_GRID } from '../../constants.js';
 
 export default function createGrid(element, gridSize) {
     const gridContainer = $(element);
