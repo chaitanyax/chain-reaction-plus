@@ -53,16 +53,23 @@ module.exports = {
                     }
                 ]
             },
+            // {
+            //     test: /\.(png|jpe?g|gif|svg)$/,
+            //     use: [
+            //         {
+            //             loader: HtmlWebpackPlugin.loader
+            //         },
+            //         {
+            //             loader: "file-loader",
+            //             options: {
+            //                 outputPath: 'images'
+            //             }
+            //         }
+            //     ]
+            // },
             {
-                test: /\.(png|jpe?g|gif|svg)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            outputPath: 'images'
-                        }
-                    }
-                ]
+                test: /\.(jpe?g|png|gif|svg)$/i, 
+                loader: "file-loader?name=/[name].[ext]"
             },
             {
                 test: /\.(mp3)$/,
