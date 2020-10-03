@@ -1,0 +1,30 @@
+.wrapper {
+    padding: 0;
+    margin: 0;
+
+    .chain-container {
+        height: 100%;
+        margin: 40px auto 40px auto;
+        max-width: 432px;
+        border: 1px solid #fff;
+        background-color: #0e153f;
+
+        .chain-row {
+            display: flex;
+            .chain-column {
+                border: 1px solid #fff;
+                width: 100%;
+                height: 70px;
+
+                .atom-img-animate {
+                    width: 100%;
+                    height: 100%;
+                    animation: mymove 5s infinite;
+                }
+                @keyframes mymove {
+                    50% {transform: rotate(360deg);}
+                }
+            }
+        }
+    }
+}

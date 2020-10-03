@@ -1,0 +1,9 @@
+@import './variables.scss';
+@import './features/chain-grid/chain-grid.scss';
+
+body {
+    background-image: url(./assets/images/bg.png);
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+}
