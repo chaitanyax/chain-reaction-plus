@@ -11,7 +11,7 @@ export function createGrid(element, gameState) {
     gridArray.reduce((input, row) => {
         let gridRow = $(getRowMarkup());
         row.reduce((input, cell) => {
-            let gridColumn = $(getCellMarkup(cell.x, cell.y));
+            let gridColumn = $(getCellMarkup(cell.x, cell.y, cell.state));
             if(cell.state > 0) {
                 gridColumn.append(getAtomToCell(cell.state, cell.color));
             }
@@ -37,8 +37,25 @@ export function createGameState(gridSize) {
     return gridArray;
 }
 
-const getCellMarkup = (x, y) => {
-    return `<div class="chain-cell chain-column" data-y="${y}" data-x="${x}"></div>`;
+export const updateGrid = (element, gameState, cellyx) => {
+    const gridContainer = element;
+    const gridArray = gameState.gridArray;
+
+    gridArray.reduce((input, row) => {
+        row.reduce((input, cell) => {
+            let currentCell = gridContainer.find(`.${cellyx}`);
+            if(cellyx === `${cell.y}-${cell.x}` && currentCell.attr('data-state') != cell.state) {
+                currentCell.empty();
+                currentCell.attr('data-state', cell.state); 
+                currentCell.append(getAtomToCell(cell.state, cell.color));
+            }
+        }, false);
+    }, false);
+
+}
+
+const getCellMarkup = (x, y, state) => {
+    return `<div class="chain-cell chain-column ${y}-${x}" data-state="${state}" data-y="${y}" data-x="${x}"></div>`;
 }
 
 const getRowMarkup = () => {

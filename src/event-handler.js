@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import  { createGrid, createGameState } from './features/chain-grid/chain-grid';
+import  { updateGrid, createGameState } from './features/chain-grid/chain-grid';
 
 export const cellClickEventHandler = ({ target }, gameState) => {
     console.log(gameState);
@@ -10,5 +10,5 @@ export const cellClickEventHandler = ({ target }, gameState) => {
     cell.updateState(gameState.turn);
     gameState.updateTurn();
     console.log(gameState);
-    createGrid($('.chain-container'), gameState);
+    updateGrid($('.chain-container'), gameState, `${y}-${x}`);
 }
