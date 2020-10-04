@@ -1,5 +1,5 @@
 export const SMALL_GRID = {
-    rows: 12,
+    rows: 8,
     columns: 6,
     name: 'small'
 }
@@ -23,4 +23,10 @@ export const PLAYER_COLOR = {
     1 : 'red',
     2 : 'blue',
     3 : 'green'
+}
+
+export const CELL_TYPE = {
+    0 : 'normal',
+    1 : 'adjacent',
+    2 : 'corner'
 }

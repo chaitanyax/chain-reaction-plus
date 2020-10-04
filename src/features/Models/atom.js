@@ -9,7 +9,7 @@ export default class Atom {
     }
 
     updateState(turn) {
-        if(this.state < Object.keys(COLORS).length) {
+        if(this.state < (Object.keys(COLORS).length - 1)) {
             if(this.state === 0 || this.color === PLAYER_COLOR[turn]) {
                 this.state = this.state + 1;
             }
