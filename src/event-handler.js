@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import  { updateGrid, createGameState } from './features/chain-grid/chain-grid';
+import  { updateGrid, bombardCell } from './features/chain-grid/chain-grid';
 
 export const cellClickEventHandler = ({ target }, gameState) => {
     console.log(gameState);
@@ -7,11 +7,14 @@ export const cellClickEventHandler = ({ target }, gameState) => {
     let y = Number($(target).closest('.chain-cell').attr('data-y')); 
     let cell = gameState.gridArray[y][x];
     let cellState = cell.state;
-    cell.updateState(gameState.turn);
+    let bombard = cell.updateState(gameState.turn);
     if(cellState !== cell.state) {
-        cell.setColor(gameState.turn);
+        bombard ? '' : cell.setColor(gameState.turn);
         gameState.updateTurn();
         updateGrid($('.chain-container'), gameState, `${y}-${x}`);
+    }
+    if(bombard) {
+        bombardCell(gameState, bombard, $('.chain-container'), `${y}-${x}`);
     }
 
     console.log(gameState);

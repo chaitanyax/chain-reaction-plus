@@ -26,7 +26,7 @@ export const PLAYER_COLOR = {
 }
 
 export const CELL_TYPE = {
-    0 : 'normal',
-    1 : 'adjacent',
-    2 : 'corner'
+    'normal' : 3,
+    'adjacent' : 2,
+    'corner' : 1
 }

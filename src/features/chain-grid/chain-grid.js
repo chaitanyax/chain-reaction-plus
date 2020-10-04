@@ -31,7 +31,7 @@ export function createGameState(gridSize) {
     for (let i = 0; i < rows; i++) {
         let rowArray = [];
         for (let j = 0; j < columns; j++) {
-            rowArray.push(new Atom(j, i, 0, COLORS.none));
+            rowArray.push(new Atom(j, i, 0, COLORS.none, gridSize));
         }
         gridArray.push(rowArray);
     }
@@ -63,6 +63,38 @@ const updateTurnColor = (color, element) => {
     } else if (color === COLORS.green) {
         applyBorder(element, '#aeab25');
     }
+}
+
+export const bombardCell = (gameState, activeCell, element, cellyx) => {
+    console.log(activeCell);
+    let fourSetsOfCordinates = getAdjacentCordinates(activeCell);
+    let afterReactionActive = [];
+    fourSetsOfCordinates.forEach((item) => {
+        if (gameState &&
+            gameState.gridArray &&
+            gameState.gridArray[item.y] &&
+            gameState.gridArray[item.y][item.x]) {
+            let cell = gameState.gridArray[item.y][item.x];
+            let bombard = cell.updateState(gameState.turn, true);
+            cell.setColorDirect(activeCell.color);
+            if(bombard) {
+                bombard.color = cell.color;
+                afterReactionActive.push(bombard)
+            }
+            updateGrid(element, gameState, `${item.y}-${item.x}`);
+        }
+    });
+    afterReactionActive.forEach((reactionCell) => {
+        bombardCell(gameState, reactionCell, element, `${reactionCell.y}-${reactionCell.x}`);
+        // setTimeout(() => {
+        //     bombardCell(gameState, reactionCell, element, `${reactionCell.y}-${reactionCell.x}`);
+        // }, 2000);
+    });
+}
+
+const getAdjacentCordinates = (activeCell) => {
+    let { x, y } = activeCell;
+    return [{ x: x + 1, y }, { x: x - 1, y }, { x, y: y + 1 }, { x, y: y - 1 }];
 }
 
 const applyBorder = (element, color) => {
