@@ -38,7 +38,7 @@ export function createGameState(gridSize) {
     return gridArray;
 }
 
-export const updateGrid = (element, gameState, cellyx) => {
+export const updateGrid = (element, gameState, cellyx, bombard) => {
     const gridContainer = element;
     const gridArray = gameState.gridArray;
 
@@ -52,10 +52,12 @@ export const updateGrid = (element, gameState, cellyx) => {
             }
         }, false);
     }, false);
-    updateTurnColor(gameState.color, gridContainer);
+    if(!bombard) {
+        updateTurnColor(gameState.color, gridContainer);
+    }
 }
 
-const updateTurnColor = (color, element) => {
+export const updateTurnColor = (color, element) => {
     if (color === COLORS.red) {
         applyBorder(element, '#f40e0e');
     } else if (color === COLORS.blue) {
