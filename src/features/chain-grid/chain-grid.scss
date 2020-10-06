@@ -5,6 +5,10 @@
     align-items: center;
     justify-content: center;
 
+    .chain-container:empty {
+        display: none;
+    }
+
     .chain-container {
         margin: 20px;
         border: 1px solid #fff;
