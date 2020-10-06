@@ -68,7 +68,6 @@ export const updateTurnColor = (color, element) => {
 }
 
 export const bombardCell = (gameState, activeCell, element, cellyx) => {
-    console.log(activeCell);
     let fourSetsOfCordinates = getAdjacentCordinates(activeCell);
     let afterReactionActive = [];
     fourSetsOfCordinates.forEach((item) => {
@@ -88,9 +87,6 @@ export const bombardCell = (gameState, activeCell, element, cellyx) => {
     });
     afterReactionActive.forEach((reactionCell) => {
         bombardCell(gameState, reactionCell, element, `${reactionCell.y}-${reactionCell.x}`);
-        // setTimeout(() => {
-        //     bombardCell(gameState, reactionCell, element, `${reactionCell.y}-${reactionCell.x}`);
-        // }, 2000);
     });
 }
 

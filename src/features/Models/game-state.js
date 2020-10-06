@@ -8,6 +8,8 @@ export default class GameState {
         this.color = playerColors[turn];
         this.gridArray = gridArray;
         this.userInputs = 0;
+        this.savedNoPlayers = noPlayer;
+        this.savedTurn = turn;
     }
     getPlayerWinLoseStatus(element) {
         let updatedUserColor = [];
@@ -32,13 +34,13 @@ export default class GameState {
         this.noPlayers = Object.keys(newPlayers).length;
         if(this.noPlayers === 1) {
             // TO DO: Below Logic is for resetting the state need to move
-            alert('You Won');
-            this.turn = 1;
+            alert(`${JSON.stringify(newPlayers)} Won`);
+            this.turn = this.savedTurn;
             playerColors = PLAYER_COLOR;
-            this.color = COLORS.none;
-            this.noPlayers = 3;
+            this.noPlayers = this.savedNoPlayers;
+            this.color = playerColors[this.turn];
             this.gridArray = createGameState(SMALL_GRID.name);
-            createGrid(element, this);
+            //createGrid(element, this);
         } else {
             playerColors = newPlayers;
             this.updateTurn(false);

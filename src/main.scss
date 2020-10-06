@@ -1,8 +1,9 @@
 @import './variables.scss';
 @import './features/chain-grid/chain-grid.scss';
+@import './features/alert-modal/alert-modal.scss';
 
 body {
-    background-image: url(./assets/images/2205.jpg);
+    background-image: url(./assets/images/bg.png);
     // background-position: center;
     // background-repeat: no-repeat;
     // background-size: cover;
