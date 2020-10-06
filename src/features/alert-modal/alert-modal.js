@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 export const alertModal = (title, playerSelection, closeButton) => {
+    $('.modal-container').empty();
     let modal = $(`<div id="chainModal" class="chain-modal">
                     <div class="modal-content"></div>
                 </div>`);
