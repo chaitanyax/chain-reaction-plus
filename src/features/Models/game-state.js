@@ -1,6 +1,6 @@
 import { COLORS, PLAYER_COLOR, SMALL_GRID } from '../../constants';
 let playerColors = PLAYER_COLOR;
-import  { updateTurnColor, createGameState, createGrid } from '../chain-grid/chain-grid';
+import { updateTurnColor, createGameState, createGrid } from '../chain-grid/chain-grid';
 import { alertModal } from '../alert-modal/alert-modal';
 export default class GameState {
     constructor(turn, noPlayer, gridArray) {
@@ -11,6 +11,16 @@ export default class GameState {
         this.userInputs = 0;
         this.savedNoPlayers = noPlayer;
         this.savedTurn = turn;
+        this.updatePlayerBasedOnUserSelection(this.savedNoPlayers);
+    }
+    updatePlayerBasedOnUserSelection(savedNoPlayers) {
+        let count = 0;
+        for (let key in playerColors) {
+            if (count >= savedNoPlayers) {
+                delete playerColors[key];
+            }
+            count++;
+        }
     }
     getPlayerWinLoseStatus(element) {
         let updatedUserColor = [];
@@ -28,14 +38,14 @@ export default class GameState {
             if (updatedUserColor.includes(playerColors[key])) {
                 newPlayers[key] = playerColors[key];
             } else {
-                alertModal(`Player ${playerColors[key]} Lost`);
+                alert(`Player ${playerColors[key]} Lost`);
                 lostplayers.push(playerColors[key]);
             }
         }
         this.noPlayers = Object.keys(newPlayers).length;
-        if(this.noPlayers === 1) {
+        if (this.noPlayers === 1) {
             // TO DO: Below Logic is for resetting the state need to move
-            alertModal(`${JSON.stringify(newPlayers)} Won`);
+            alert(`${JSON.stringify(newPlayers)} Won`);
             this.turn = this.savedTurn;
             playerColors = PLAYER_COLOR;
             this.noPlayers = this.savedNoPlayers;
