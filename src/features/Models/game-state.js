@@ -38,14 +38,14 @@ export default class GameState {
             if (updatedUserColor.includes(playerColors[key])) {
                 newPlayers[key] = playerColors[key];
             } else {
-                alert(`Player ${playerColors[key]} Lost`);
                 lostplayers.push(playerColors[key]);
             }
         }
+        alert(`Player ${lostplayers.join(' ')} Lost`);
         this.noPlayers = Object.keys(newPlayers).length;
         if (this.noPlayers === 1) {
             // TO DO: Below Logic is for resetting the state need to move
-            alert(`${JSON.stringify(newPlayers)} Won`);
+            alertModal(`${newPlayers[Object.keys(newPlayers)[0]]} Won`);
             this.turn = this.savedTurn;
             playerColors = PLAYER_COLOR;
             this.noPlayers = this.savedNoPlayers;
@@ -57,6 +57,13 @@ export default class GameState {
             this.updateTurn(false);
             updateTurnColor(this.color, element);
         }
+    }
+    getPlayersList(players) {
+        let playerNames = '';
+        for(let player in players) {
+            playerNames = playerNames + playerNames ? ' ' : '' + player[Object.keys(player[0])];
+        }
+        return playerNames;
     }
     incrementUserInput() {
         this.userInputs += 1;
