@@ -41,7 +41,9 @@ export default class GameState {
                 lostplayers.push(playerColors[key]);
             }
         }
-        alert(`Player ${lostplayers.join(' ')} Lost`);
+        if(Boolean(lostplayers.length)) {
+            alert(`Player ${lostplayers.join(' ')} Lost`);
+        }
         this.noPlayers = Object.keys(newPlayers).length;
         if (this.noPlayers === 1) {
             // TO DO: Below Logic is for resetting the state need to move

@@ -30,6 +30,9 @@ export default class Atom {
                 this.state = this.state + 1;
             }
         } else {
+            if(!direct && this.color !== PLAYER_COLOR[turn]) {
+                return false;
+            }
             // We return below object to know it is time to bombard
             let bombard = {
                 ...this

@@ -52,7 +52,7 @@ export const updateGrid = (element, gameState, cellyx, bombard) => {
             }
         }, false);
     }, false);
-    if(!bombard) {
+    if (!bombard) {
         updateTurnColor(gameState.color, gridContainer);
     }
 }
@@ -78,7 +78,7 @@ export const bombardCell = (gameState, activeCell, element, cellyx) => {
             let cell = gameState.gridArray[item.y][item.x];
             let bombard = cell.updateState(gameState.turn, true);
             cell.setColorDirect(activeCell.color);
-            if(bombard) {
+            if (bombard) {
                 bombard.color = cell.color;
                 afterReactionActive.push(bombard)
             }
