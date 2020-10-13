@@ -76,7 +76,7 @@ export const bombardCell = (gameState, activeCell, element, cellyx) => {
             gameState.gridArray[item.y] &&
             gameState.gridArray[item.y][item.x]) {
             let cell = gameState.gridArray[item.y][item.x];
-            let bombard = cell.updateState(gameState.turn, true);
+            let bombard = cell.updateState(gameState, true);
             cell.setColorDirect(activeCell.color);
             if (bombard) {
                 bombard.color = cell.color;
@@ -112,3 +112,5 @@ const getAtomToCell = (state, color) => {
     if (!state) return;
     return `<img alt="${color}-${state}" src="./${color}${state}.png" class="atom-img-animate">`;
 }
+
+const sleep = ms => new Promise((resolve) => { setTimeout(resolve, ms); });

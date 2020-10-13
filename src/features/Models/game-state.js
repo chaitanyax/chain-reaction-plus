@@ -1,12 +1,12 @@
 import { COLORS, PLAYER_COLOR, SMALL_GRID } from '../../constants';
-let playerColors = PLAYER_COLOR;
 import { updateTurnColor, createGameState, createGrid } from '../chain-grid/chain-grid';
 import { alertModal } from '../alert-modal/alert-modal';
 export default class GameState {
     constructor(turn, noPlayer, gridArray) {
+        this.playerColors = PLAYER_COLOR;
         this.turn = turn;
         this.noPlayers = noPlayer;
-        this.color = playerColors[turn];
+        this.color = PLAYER_COLOR[turn];
         this.gridArray = gridArray;
         this.userInputs = 0;
         this.savedNoPlayers = noPlayer;
@@ -15,9 +15,9 @@ export default class GameState {
     }
     updatePlayerBasedOnUserSelection(savedNoPlayers) {
         let count = 0;
-        for (let key in playerColors) {
+        for (let key in this.playerColors) {
             if (count >= savedNoPlayers) {
-                delete playerColors[key];
+                delete this.playerColors[key];
             }
             count++;
         }
@@ -34,11 +34,11 @@ export default class GameState {
         }
         let newPlayers = {};
         let lostplayers = [];
-        for (let key in playerColors) {
-            if (updatedUserColor.includes(playerColors[key])) {
-                newPlayers[key] = playerColors[key];
+        for (let key in this.playerColors) {
+            if (updatedUserColor.includes(this.playerColors[key])) {
+                newPlayers[key] = this.playerColors[key];
             } else {
-                lostplayers.push(playerColors[key]);
+                lostplayers.push(this.playerColors[key]);
             }
         }
         if(Boolean(lostplayers.length)) {
@@ -49,16 +49,26 @@ export default class GameState {
             // TO DO: Below Logic is for resetting the state need to move
             alertModal(`${newPlayers[Object.keys(newPlayers)[0]]} Won`);
             this.turn = this.savedTurn;
-            playerColors = PLAYER_COLOR;
+            this.playerColors = PLAYER_COLOR;
             this.noPlayers = this.savedNoPlayers;
-            this.color = playerColors[this.turn];
+            this.color = this.playerColors[this.turn];
             this.gridArray = createGameState(SMALL_GRID.name);
             //createGrid(element, this);
         } else {
-            playerColors = newPlayers;
+            debugger;
+            this.playerColors = this.getNewPlayers(newPlayers);
             this.updateTurn(false);
             updateTurnColor(this.color, element);
         }
+    }
+    getNewPlayers(players) {
+        let newPlayers = {};
+        let count = 1;
+        for(let key in players) {
+            newPlayers[count] = players[key];
+            count ++;
+        }
+        return newPlayers;
     }
     getPlayersList(players) {
         let playerNames = '';
@@ -77,7 +87,7 @@ export default class GameState {
             } else {
                 this.turn = this.turn + 1;
             }
-            this.color = playerColors[this.turn];
+            this.color = this.playerColors[this.turn];
         }
     }
 }

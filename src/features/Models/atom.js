@@ -24,13 +24,13 @@ export default class Atom {
         return CELL_TYPE.normal
     }
 
-    updateState(turn, direct) {
+    updateState(gameSate, direct) {
         if (this.state < this.cellType) {
-            if (this.state === 0 || this.color === PLAYER_COLOR[turn] || direct) {
+            if (this.state === 0 || this.color === gameSate.playerColors[gameSate.turn] || direct) {
                 this.state = this.state + 1;
             }
         } else {
-            if(!direct && this.color !== PLAYER_COLOR[turn]) {
+            if(!direct && this.color !== gameSate.playerColors[gameSate.turn]) {
                 return false;
             }
             // We return below object to know it is time to bombard

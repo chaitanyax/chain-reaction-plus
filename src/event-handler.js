@@ -8,7 +8,7 @@ export const cellClickEventHandler = ({ target }, gameState) => {
     gameState.incrementUserInput();
     let cell = gameState.gridArray[y][x];
     let cellState = cell.state;
-    let bombard = cell.updateState(gameState.turn);
+    let bombard = cell.updateState(gameState);
     if(cellState !== cell.state) {
         bombard ? '' : cell.setColor(gameState.turn);
         gameState.updateTurn(bombard);
