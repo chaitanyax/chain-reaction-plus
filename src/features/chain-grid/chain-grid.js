@@ -16,9 +16,9 @@ export function createGrid(element, gameState) {
                 gridColumn.append(getAtomToCell(cell.state, cell.color));
             }
             gridRow.append(gridColumn);
-        }, false);
+        });
         gridContainer.append(gridRow);
-    }, false);
+    });
 
     $('.chain-cell').on('click', (e) => cellClickEventHandler(e, gameState));
     updateTurnColor(gameState.color, gridContainer);
