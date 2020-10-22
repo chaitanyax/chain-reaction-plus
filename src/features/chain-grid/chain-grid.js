@@ -70,7 +70,7 @@ export const updateTurnColor = (color, element) => {
   }
 };
 
-export const bombardCell = (gameState, activeCell, element, cellyx) => {
+export const bombardCell = (gameState, activeCell, element) => {
   let fourSetsOfCordinates = getAdjacentCordinates(activeCell);
   let afterReactionActive = [];
   fourSetsOfCordinates.forEach((item) => {
@@ -130,7 +130,7 @@ const getAtomToCell = (state, color) => {
   return `<img alt="${color}-${state}" src="./${color}${state}.png" class="atom-img-animate">`;
 };
 
-const sleep = (ms) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+// const sleep = (ms) =>
+//   new Promise((resolve) => {
+//     setTimeout(resolve, ms);
+//   });

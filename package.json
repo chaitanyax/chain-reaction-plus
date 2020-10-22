@@ -9,7 +9,9 @@
     "build": "webpack --config webpack.config.js --mode production",
     "start": "webpack-dev-server",
     "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,scss}\"",
-    "format:check": "prettier --ignore-path ./.gitignore --check \"./**/*.{html,json,js,ts,scss}\""
+    "format:check": "prettier --ignore-path ./.gitignore --check \"./**/*.{html,json,js,ts,scss}\"",
+    "lint": "eslint --ignore-path ./.gitignore --fix \"./**/*.{js,ts}\"",
+    "lint:check": "eslint --ignore-path ./.gitignore --quiet \"./**/*.{js,ts}\""
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,9 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "cssnano": "^4.1.10",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-import": "^2.22.1",
     "file-loader": "^6.1.0",
     "html-loader": "^1.3.1",
     "html-webpack-plugin": "^4.5.0",

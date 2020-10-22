@@ -2,7 +2,6 @@ import { COLORS, PLAYER_COLOR, SMALL_GRID } from "../../constants";
 import {
   updateTurnColor,
   createGameState,
-  createGrid,
 } from "../chain-grid/chain-grid";
 import { alertModal } from "../alert-modal/alert-modal";
 export default class GameState {
@@ -44,7 +43,7 @@ export default class GameState {
         lostplayers.push(this.playerColors[key]);
       }
     }
-    if (Boolean(lostplayers.length)) {
+    if (lostplayers.length) {
       alert(`Player ${lostplayers.join(" ")} Lost`);
     }
     this.noPlayers = Object.keys(newPlayers).length;
@@ -58,7 +57,6 @@ export default class GameState {
       this.gridArray = createGameState(SMALL_GRID.name);
       //createGrid(element, this);
     } else {
-      debugger;
       this.playerColors = this.getNewPlayers(newPlayers);
       this.updateTurn(false);
       updateTurnColor(this.color, element);
