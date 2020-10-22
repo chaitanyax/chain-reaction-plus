@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config webpack.config.js --mode development",
     "build": "webpack --config webpack.config.js --mode production",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,scss}\"",
+    "format:check": "prettier --ignore-path ./.gitignore --check \"./**/*.{html,json,js,ts,scss}\""
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^0.11.2",
     "postcss-loader": "^4.0.2",
+    "prettier": "^2.1.2",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "webpack": "^4.44.2",
