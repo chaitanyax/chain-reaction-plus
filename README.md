@@ -2,7 +2,9 @@
 
 > This is an Advanced version of famous mobile game "Chain Reaction"!
 > This game is developed purely using html elements (without canvas)
+> https://chaitanyax.github.io/chain-reaction-plus/
 
+[Live Demo click here](https://chaitanyax.github.io/chain-reaction-plus/)
 ## Build Setup
 
 ``` bash
