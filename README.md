@@ -5,6 +5,8 @@
 > https://chaitanyax.github.io/chain-reaction-plus/
 
 [Live Demo click here](https://chaitanyax.github.io/chain-reaction-plus/)
+
+![Game UI](./game.PNG "GAME SCREEN")
 ## Build Setup
 
 ``` bash
